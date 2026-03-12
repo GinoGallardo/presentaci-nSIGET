@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGET - Presentación</title>
+  <link rel="icon" href="data:image/svg+xml,
+<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+<rect width=%22100%25%22 height=%22100%25%22 fill=%22%231e293b%22/>
+<text x=%2250%25%22 y=%2265%25%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22%23facc15%22 font-family=%22Arial%22>S</text>
+</svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css">
+  <style>
+    :root {
+      --siget-yellow: #facc15;
+      --siget-blue: #3b82f6;
+      --siget-dark: #1e293b;
+    }
+    .reveal {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .reveal h1, .reveal h2 {
+      text-transform: none;
+      font-weight: 700;
+    }
+    .reveal h1 {
+      color: var(--siget-yellow);
+      font-size: 2.8em;
+      text-shadow: 0 0 30px rgba(250, 204, 21, 0.3);
+    }
+    .reveal h2 {
+      color: var(--siget-yellow);
+      font-size: 1.8em;
+      border-bottom: 2px solid var(--siget-blue);
+      padding-bottom: 0.3em;
+    }
+    .reveal .slides section[data-slide-type="img"] h2 {
+      font-size: 1.4em;
+      margin-bottom: 0.3em;
+    }
+    .reveal .subtitle {
+      color: #94a3b8;
+      font-size: 1.1em;
+      margin-top: 0.5em;
+    }
+    .reveal section {
+      text-align: left;
+    }
+    .reveal section.center {
+      text-align: center;
+    }
+    .reveal ul {
+      line-height: 1.8;
+    }
+    .reveal li {
+      margin-bottom: 0.4em;
+    }
+    .slide-img {
+      max-width: 48%;
+      max-height: 28vh;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      object-fit: contain;
+    }
+    .slide-img-placeholder {
+      width: 100%;
+      max-width: 280px;
+      height: 28vh;
+      max-height: 140px;
+      background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 1rem;
+      border: 2px dashed #475569;
+      margin: 0 auto;
+    }
+    .img-container {
+      display: flex;
+      justify-content: center;
+      margin: 0.2em 0;
+    }
+    .slide-compact {
+      font-size: 0.85em;
+      line-height: 1.5;
+    }
+    .slide-compact h2 { font-size: 1.5em; }
+    .slide-compact p { margin: 0.4em 0; }
+    .slide-compact ul { margin-top: 0.5em; line-height: 1.5; }
+    .slide-compact li { margin-bottom: 0.2em; }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1em;
+      font-size: 0.9em;
+    }
+    .tech-card {
+      background: rgba(59, 130, 246, 0.15);
+      padding: 1em 1.2em;
+      border-radius: 8px;
+      border-left: 4px solid var(--siget-blue);
+    }
+    .tech-card strong {
+      color: var(--siget-yellow);
+    }
+    .api-table {
+      font-size: 0.75em;
+      width: 100%;
+    }
+    .api-table th {
+      background: var(--siget-blue);
+      color: white;
+      padding: 0.5em;
+      text-align: left;
+    }
+    .api-table td {
+      padding: 0.4em;
+    }
+    .api-table tr:nth-child(even) {
+      background: rgba(255,255,255,0.05);
+    }
+    .reveal .controls {
+      color: var(--siget-yellow);
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1. Portada -->
+      <section class="center">
+        <h1>SIGET</h1>
+        <p class="subtitle">Sistema Inteligente de Gestión y Evaluación de Tráfico</p>
+        <p style="margin-top: 2em; font-size: 0.9em; color: #64748b;">React + FastAPI + SUMO</p>
+      </section>
+
+      <!-- 2. ¿Qué es? -->
+      <section class="slide-compact">
+        <h2>¿Qué es SIGET?</h2>
+        <p>Aplicación web para <strong>consultar, editar y simular</strong> semáforos (TLS) de una red de tránsito modelada en SUMO.</p>
+        <p>Pensada para redes urbanas como Buenos Aires: gestionar programas de semáforos y evaluar el tráfico mediante simulaciones.</p>
+        <ul>
+          <li>Consultar cruces por número</li>
+          <li>Editar fases y guardar en el archivo de red</li>
+          <li>Lanzar simulación SUMO centrada en el cruce</li>
+        </ul>
+      </section>
+
+      <!-- 3. Pantalla inicial - con imagen -->
+      <section data-slide-type="img">
+        <h2>Interfaz: pantalla inicial</h2>
+        <div class="img-container">
+          <img src="img/01-inicio.png" alt="Pantalla inicial SIGET" class="slide-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-img-placeholder" style="display:none;">
+            Agregar captura: pantalla inicial (01-inicio.png)
+          </div>
+        </div>
+        <p style="font-size: 0.7em; color: #94a3b8; margin: 0.2em 0 0 0;">Búsqueda por número de cruce</p>
+      </section>
+
+      <!-- 4. Resultado de búsqueda -->
+      <section data-slide-type="img">
+        <h2>Resultado: datos del cruce</h2>
+        <div class="img-container">
+          <img src="img/02-busqueda.png" alt="Datos del cruce" class="slide-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-img-placeholder" style="display:none;">
+            Agregar captura: resultado de búsqueda (02-busqueda.png)
+          </div>
+        </div>
+        <p style="font-size: 0.7em; color: #94a3b8; margin: 0.2em 0 0 0;">Calles, fases del semáforo y duraciones</p>
+      </section>
+
+      <!-- 5. Edición -->
+      <section data-slide-type="img">
+        <h2>Edición de fases</h2>
+        <div class="img-container">
+          <img src="img/03-edicion.png" alt="Modo edición" class="slide-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-img-placeholder" style="display:none;">
+            Agregar captura: modo edición (03-edicion.png)
+          </div>
+        </div>
+        <p style="font-size: 0.7em; color: #94a3b8; margin: 0.2em 0 0 0;">Modificar duración y estados, guardar en el .net.xml</p>
+      </section>
+
+      <!-- 6. Simulación SUMO -->
+      <section>
+        <h2>Simulación SUMO</h2>
+        <div class="img-container">
+          <img src="img/04-simulacion.png" alt="SUMO GUI" class="slide-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-img-placeholder" style="display:none;">
+            Agregar captura: SUMO con simulación (04-simulacion.png)
+          </div>
+        </div>
+        <p style="font-size: 0.75em; color: #94a3b8; margin-top: 0.3em;">Vehículos circulando por el cruce seleccionado</p>
+      </section>
+
+      <!-- 7. Manejo de errores -->
+      <section>
+        <h2>Manejo de errores</h2>
+        <div class="img-container">
+          <img src="img/05-error.png" alt="Cruce no existente" class="slide-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-img-placeholder" style="display:none;">
+            Agregar captura: mensaje "Cruce no existente" (05-error.png)
+          </div>
+        </div>
+        <p style="font-size: 0.75em; color: #94a3b8; margin-top: 0.3em;">Mensaje claro cuando el cruce no existe</p>
+      </section>
+
+      <!-- 8. Tecnologías -->
+      <section>
+        <h2>Tecnologías</h2>
+        <div class="tech-grid">
+          <div class="tech-card"><strong>Frontend</strong><br>React 19, TypeScript, Vite 7, Tailwind CSS 4</div>
+          <div class="tech-card"><strong>Backend</strong><br>Python 3, FastAPI</div>
+          <div class="tech-card"><strong>Simulación</strong><br>SUMO (Eclipse SUMO)</div>
+          <div class="tech-card"><strong>Datos</strong><br>XML (.net.xml, .rou.xml)</div>
+        </div>
+      </section>
+
+      <!-- 9. Cómo funciona -->
+      <section>
+        <h2>Cómo funciona</h2>
+        <ol style="line-height: 2;">
+          <li><strong>Carga:</strong> El backend carga el .net.xml al iniciar</li>
+          <li><strong>Búsqueda:</strong> Usuario ingresa número → backend devuelve cruce y programa</li>
+          <li><strong>Edición:</strong> Cambios en fases → Guardar → actualiza XML + backup</li>
+          <li><strong>Simulación:</strong> Genera rutas temporales → abre SUMO GUI centrado en el cruce</li>
+        </ol>
+      </section>
+
+      <!-- 10. API -->
+      <section>
+        <h2>API REST (Backend)</h2>
+        <table class="api-table">
+          <thead>
+            <tr><th>Método</th><th>Ruta</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>GET</td><td>/tls/cruce/{numero}</td><td>Obtener datos del cruce</td></tr>
+            <tr><td>GET</td><td>/tls/{tl_id}</td><td>Obtener programa TLS</td></tr>
+            <tr><td>POST</td><td>/tls/{tl_id}/program</td><td>Actualizar programa</td></tr>
+            <tr><td>POST</td><td>/tls/simulation/start/{numero}</td><td>Iniciar simulación</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 11. Estructura del proyecto -->
+      <section>
+        <h2>Estructura del proyecto</h2>
+        <pre style="font-size: 0.45em; width: 100%;"><code>siget/
+├── siget-backend/      → API FastAPI
+├── siget-frontend/     → React + Vite
+├── sumo-data/          → Red .net.xml, rutas, backups
+└── presentacion/       → Esta presentación</code></pre>
+      </section>
+
+      <!-- 12. Cierre -->
+      <section class="center">
+        <h1>SIGET</h1>
+        <p class="subtitle">Sistema Inteligente de Gestión y Evaluación de Tráfico</p>
+        <p style="margin-top: 2em; font-size: 0.9em;">Gracias</p>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      progress: true,
+      center: false
+    });
+  </script>
+</body>
+</html>
